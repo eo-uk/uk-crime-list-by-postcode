@@ -103,7 +103,10 @@ export default function SearchForm({setCrimes}) {
                     setMessage={setMessage}
                 />
                 <SearchFormDate date={date} setDate={setDate} />
-                <SearchCurrentLocation setCoords={setCoords} setPostcode={setPostcode} />
+                {/*
+                    Disabled due to inconsistent Capacitor API returns
+                    <SearchCurrentLocation setCoords={setCoords} setPostcode={setPostcode} />
+                */}
             </form>
             
             <p>{message}</p>

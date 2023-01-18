@@ -13,10 +13,9 @@ export default function SearchCurrentLocation({setCoords, setPostcode}) {
 
         const currentLocation = await getCurrentLocation();
         setCoords({
-            'latitude': currentLocation.coords.latitude,
-            'longitude': currentLocation.coords.longitude
+            'latitude': currentLocation.coords.latitude.toFixed(6),
+            'longitude': currentLocation.coords.longitude.toFixed(6)
         });
-        
     }
 
     return  (

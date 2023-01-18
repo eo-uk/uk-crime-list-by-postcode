@@ -1,4 +1,3 @@
-
 .App {
   text-align: center;
 }
@@ -6,6 +5,7 @@ body {
   max-width: 450px;
   margin: auto;
   font-family: 'Lato', sans-serif;
+  background: #2b3d5f;
 }
 .search-bar {
   display: flex;
@@ -13,7 +13,6 @@ body {
   justify-content: center;
 }
 .search-form {
-  margin-bottom: 3em;
   padding: 2em;
   background-color: #f1f6ff;
   box-shadow: rgb(50 50 93 / 25%) 0px 30px 60px -12px, rgb(0 0 0 / 30%) 0px 18px 36px -18px;
@@ -57,18 +56,20 @@ body {
 }
 .crime-list {
   list-style: none;
-  margin-top: 2em;
   padding-left: 0;
+  width: 100%;
+  margin: auto;
+  background: #2b3d5f;
 }
 .crime-list .crime-item {
-  width: 80%;
-  margin: auto;
-  margin-bottom: 2em;
-  padding: 1em;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 1.4em 0;
+  padding: 2em;
   padding-bottom: 2em;
   border-radius: 4px;
-  background-color: #2b3d5f;
-  color: #fff;
+  color: #000;
+  background-color: #f1f6ff;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 .crime-list .crime-item h3 {
@@ -92,4 +93,7 @@ body {
 .crime-map .detail-list {
   list-style: none;
   padding-left: 0;
+}
+.react-datepicker-popper {
+  z-index: 9999 !important;
 }
