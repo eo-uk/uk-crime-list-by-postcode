@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import CrimeList from "./CrimeList";
+import CrimeMap from "./CrimeMap";
 import SearchForm from "./SearchForm";
 
 export default function CrimeComponent() {
@@ -9,6 +10,7 @@ export default function CrimeComponent() {
     return (
         <div className="crime-checker">
             <SearchForm setCrimes={setCrimes} />
+            <CrimeMap crimes={crimes} />
             <CrimeList crimes={crimes} />
         </div>
     );

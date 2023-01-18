@@ -57,6 +57,7 @@ body {
 }
 .crime-list {
   list-style: none;
+  margin-top: 2em;
   padding-left: 0;
 }
 .crime-list .crime-item {
@@ -84,4 +85,11 @@ body {
   content: '⮞';
   position: absolute;
   left: -1.2em;
+}
+.leaflet-container {
+  height: 300px;
+}
+.crime-map .detail-list {
+  list-style: none;
+  padding-left: 0;
 }
