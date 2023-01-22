@@ -4,9 +4,9 @@ import SearchFormDate from "./SearchFormDate";
 import SearchCurrentLocation from "./SearchCurrentLocation";
 import SearchBar from "./SearchBar";
 import SearchCoordsDisplay from "./SearchCoordsDisplay";
+import CrimeMap from "./CrimeMap";
 
-export default function SearchForm({setCrimes}) {
-
+export default function SearchForm({ crimes, setCrimes }) {
     const [message, setMessage] = useState('');
     const [coords, setCoords] = useState({});
     const [postcode, setPostcode] = useState('');
@@ -15,7 +15,7 @@ export default function SearchForm({setCrimes}) {
 
     useEffect(() => {
         // UK official postcode re
-        const rePostcode = /\b([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})\b$/;
+        const rePostcode = /^\b([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})\b$/;
 
         if (postcode.match(rePostcode)) {
             setPostcodeCorrect(true);
@@ -56,10 +56,11 @@ export default function SearchForm({setCrimes}) {
         .then(data => {
             console.log(data);
             if (!data) {
-                setMessage('No response');
+                setMessage('No Data');
                 throw Error;
             }
             setCrimes(data);
+            setMessage('');
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -104,7 +105,7 @@ export default function SearchForm({setCrimes}) {
                 />
                 <SearchFormDate date={date} setDate={setDate} />
                 {/*
-                    Disabled due to inconsistent Capacitor API returns
+                    // Disabled due to inconsistent Capacitor API returns
                     <SearchCurrentLocation setCoords={setCoords} setPostcode={setPostcode} />
                 */}
             </form>
@@ -112,6 +113,8 @@ export default function SearchForm({setCrimes}) {
             <p>{message}</p>
 
             {coords['latitude'] && coords['longitude'] && <SearchCoordsDisplay coords={coords} />}
+
+            <CrimeMap crimes={crimes} coords={coords} setCoords={setCoords} />
         </div>
     );
 }
